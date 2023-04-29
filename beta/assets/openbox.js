@@ -32,7 +32,7 @@ function setMode(mode, i) {
   if (id === -1) {
     window.addEventListener('message', (event) => {
       if (event.data !== 'run') {
-        //console.log(event.data);
+        console.log(event.data);
         callback(Number(event.data));
       }
     }, false);
@@ -82,7 +82,7 @@ function check() {
     flag=1;/*10%已经出来了的标志*/
     const val = parseInt(progress[pos1].textContent.split(' ')[2]);
     window.postMessage(val,'*');
-
+    console.log('sent 10% msg'+val)
     setTimeout(() => {
       check();
     }, 30000);
@@ -91,6 +91,7 @@ function check() {
     
     const val = parseInt(progress[pos2].textContent.split(' ')[2]);
     window.postMessage(val,'*');
+    console.log('sent 100% msg'+val)
   }
 }
 
