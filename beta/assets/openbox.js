@@ -32,8 +32,8 @@ function setMode(mode, i) {
   if (id === -1) {
     window.addEventListener('message', (event) => {
       if (event.data !== 'run') {
-        console.log(event.data);
-        //callback(Number(event.data.slice(6)));
+        //console.log(event.data);
+        callback(Number(event.data));
       }
     }, false);
   }
