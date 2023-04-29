@@ -118,5 +118,6 @@ function reload(name, mode) {
     $('#textdiv>textarea')[0].value += '\n' + name;
   }
   $('.goBtn')[0].click();
+  flag=0;
   check();
 }
