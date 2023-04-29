@@ -98,6 +98,7 @@ function check() {
     const val = parseInt(progress[pos2].textContent.split(' ')[2]);
     window.postMessage(val,'*');
     console.log('sent 100% msg'+val)
+    flag==0;
     return;
   }
 }
