@@ -130,5 +130,7 @@ function reload(name, mode) {
     $('#textdiv>textarea')[0].value += '\n' + name;
   }
   $('.goBtn')[0].click();
-  check();
+  timer = setTimeout(() => {
+        check();
+   }, 3000);
 }
