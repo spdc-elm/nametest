@@ -49,7 +49,7 @@ let flag = 0;
 function check() {
   if (concise_mode==0){
     if (cw().document.querySelectorAll('span.u').length <= 10) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         check();
       }, 1000);
         return;
@@ -67,7 +67,8 @@ function check() {
     
     if (pos1 == -1) {
       /*10%没出*/
-      setTimeout(() => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
         check();
       }, 1000);
       return;
@@ -81,7 +82,7 @@ function check() {
   
   if (concise_mode==1){
     if (cw().document.querySelectorAll('span.u').length <= 100) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         check();
       }, 1000);
         return;
@@ -96,8 +97,9 @@ function check() {
     }
     
     if (pos2 == -1) {
-      /*10%没出*/
-      setTimeout(() => {
+      /*100%没出*/
+      clearTimeout(timer);
+      timer = setTimeout(() => {
         check();
       }, 1000);
       return;
