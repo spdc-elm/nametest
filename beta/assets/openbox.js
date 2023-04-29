@@ -32,12 +32,68 @@ function setMode(mode, i) {
   if (id === -1) {
     window.addEventListener('message', (event) => {
       if (event.data !== 'run') {
-        callback(Number(event.data.slice(6)));
+        console.log(event.data);
+        //callback(Number(event.data.slice(6)));
       }
     }, false);
   }
   id = i;
 }
+
+/**
+ * to post message when the test finished
+ * */
+let flag = 0;
+function check() {
+  
+  if (cw().document.querySelectorAll('span.u').length <= 10) {
+    setTimeout(() => {
+      check();
+    }, 1000);
+    return;
+  }
+  const progress = cw().document.querySelectorAll('span.u');
+  let pos1 = -1;
+  let pos2 = -1;
+  for (let i = 9; i < progress.length; i++) {
+    const element = progress[i];
+    if (element.textContent.split(' ')[0] === '》') {
+      pos1 = i;
+      break;
+    }
+  }
+  for (let i = 100; i < progress.length; i++) {
+    const element = progress[i];
+    if (element.textContent.split(' ')[0] === '》') {
+      pos2 = i;
+      break;
+    }
+  }
+
+  if (pos1 == -1) {
+    flag=0;/*10%没出*/
+    setTimeout(() => {
+      check();
+    }, 1000);
+    return;
+  }
+  
+  if (flag==0 && pos2 == -1){
+    flag=1;/*10%已经出来了的标志*/
+    const val = parseInt(progress[pos1].textContent.split(' ')[2]);
+    window.postMessage(score,'*');
+
+    setTimeout(() => {
+      check();
+    }, 30000);
+  } 
+  if (flag==1 && pos2 != -1) {
+    
+    const val = parseInt(progress[pos2].textContent.split(' ')[2]);
+    window.postMessage(score,'*');
+  }
+}
+
 /**
  * Reload.
  * @param {String} name name to be tested.
@@ -53,4 +109,5 @@ function reload(name, mode) {
     $('#textdiv>textarea')[0].value += '\n' + name;
   }
   $('.goBtn')[0].click();
+  check();
 }
