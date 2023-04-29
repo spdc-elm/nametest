@@ -4,6 +4,7 @@ let callback;
 //let cnt = 0;
 let mdd;
 let id = -1;
+let concise_mode;
 /**
  * 10% score.
  * @param {Number} score score.
@@ -38,6 +39,7 @@ function setMode(mode, i) {
     }, false);
   }
   id = i;
+  concise_mode = mode;
 }
 
 /**
@@ -45,7 +47,7 @@ function setMode(mode, i) {
  * */
 let flag = 0;
 function check() {
-  if (mdd==0){
+  if (concise_mode==0){
     if (cw().document.querySelectorAll('span.u').length <= 10) {
       setTimeout(() => {
         check();
@@ -77,7 +79,7 @@ function check() {
       return;
   }
   
-  if (mdd==1){
+  if (concise_mode==1){
     if (cw().document.querySelectorAll('span.u').length <= 100) {
       setTimeout(() => {
         check();
