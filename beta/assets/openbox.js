@@ -62,7 +62,7 @@ function check() {
       break;
     }
   }
-  for (let i = 100; i < progress.length; i++) {
+  for (let i = 99; i < progress.length; i++) {
     const element = progress[i];
     if (element.textContent.split(' ')[0] === '》') {
       pos2 = i;
@@ -86,7 +86,9 @@ function check() {
     setTimeout(() => {
       check();
     }, 30000);
+    return;
   } 
+  console.log(pos2);
   if (flag==1 && pos2 != -1) {
     
     const val = parseInt(progress[pos2].textContent.split(' ')[2]);
