@@ -89,6 +89,9 @@ function check() {
         return;
      }
     
+    const progress = cw().document.querySelectorAll('span.u');
+    let pos2 = -1;
+    
      for (let i = 99; i < progress.length; i++) {
       const element = progress[i];
       if (element.textContent.split(' ')[0] === '》') {
