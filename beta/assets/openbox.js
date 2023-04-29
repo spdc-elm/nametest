@@ -88,12 +88,17 @@ function check() {
     }, 30000);
     return;
   } 
-  console.log(pos2);
+  if (flag==1 && pos2 == -1) {
+    setTimeout(() => {
+      check();
+    }, 3000);
+    return;
+  }
   if (flag==1 && pos2 != -1) {
-    
     const val = parseInt(progress[pos2].textContent.split(' ')[2]);
     window.postMessage(val,'*');
     console.log('sent 100% msg'+val)
+    return;
   }
 }
 
