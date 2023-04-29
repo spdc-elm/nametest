@@ -81,7 +81,7 @@ function check() {
   if (flag==0 && pos2 == -1){
     flag=1;/*10%已经出来了的标志*/
     const val = parseInt(progress[pos1].textContent.split(' ')[2]);
-    window.postMessage(score,'*');
+    window.postMessage(val,'*');
 
     setTimeout(() => {
       check();
@@ -90,7 +90,7 @@ function check() {
   if (flag==1 && pos2 != -1) {
     
     const val = parseInt(progress[pos2].textContent.split(' ')[2]);
-    window.postMessage(score,'*');
+    window.postMessage(val,'*');
   }
 }
 
