@@ -76,7 +76,8 @@ function check() {
 
       const val = parseInt(progress[pos1].textContent.split(' ')[2]);
       window.postMessage(val,'*');
-      console.log('sent 10% msg'+val)
+      console.log('sent 10% msg'+val);
+      
       return;
   }
   
@@ -107,7 +108,8 @@ function check() {
 
       const val = parseInt(progress[pos2].textContent.split(' ')[2]);
       window.postMessage(val,'*');
-      console.log('sent 100% msg'+val)
+      console.log('sent 100% msg'+val);
+      
       return;
     
   }
