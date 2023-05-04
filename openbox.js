@@ -124,7 +124,7 @@ function st() {
       }, 3000);
     }
     
-    $('#progress_bar')[0].value = `${j}/${a.length}` //进度条更新
+    $('#progress_bar')[0].innerHTML = `${j}/${a.length}` //进度条更新
   });//event listener end
   
   
