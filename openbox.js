@@ -90,7 +90,6 @@ function st() {
     const score = event.data[1];
     const m = event.data[2];
     const id = event.data[3];
-    console.log(name);
     
     results[name][r2[m]]= score;
     if (score >= thresholds[m]) $('#result')[0].value += `${name}\t${r[m]}\t${score}\n`;
@@ -123,8 +122,7 @@ function st() {
         }
       }, 3000);
     }
-    
-    $('#progress_bar')[0].innerHTML = `${j}/${a.length}` //进度条更新
+    if (name in results) $('#progress_bar')[0].innerHTML = `${j}/${a.length}`; //进度条更新
   });//event listener end
   
   
