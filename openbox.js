@@ -122,7 +122,7 @@ function st() {
         }
       }, 3000);
     }
-    if (name in results) $('#progress_bar')[0].innerHTML = `${j}/${a.length}`; //进度条更新
+    if (name in results) $('#progress_bar')[0].innerHTML = `${j-Number($('#multi')[0].value)}/${a.length}`; //进度条更新
   });//event listener end
   
   
