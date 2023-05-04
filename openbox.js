@@ -115,7 +115,7 @@ function st() {
     }
     if (++j == a.length + ifr.length){
       alert('测试已完成');
-      $('#done')[0].checked = true;
+      $('#done')[0].checked = true;//弄了个标记完成状态的小框
       setTimeout(() => {
         for (let i = 0; i < ifr.length; i++) {
             let cw = ifr[i].contentWindow;
@@ -123,6 +123,8 @@ function st() {
         }
       }, 3000);
     }
+    
+    $('#progress_bar')[0].value = `${j}/${a.length}` //进度条更新
   });//event listener end
   
   
@@ -132,32 +134,8 @@ function st() {
         const cw = ifr[i].contentWindow;
         cw.setMode(a[i].time, i);
         cw.reload(a[i].name, a[i].mode);
-      }, i * 2000);
+      }, 2000);//直接缩短初始化时间，所有窗口一起初始
     }
   }, 5000);
 }
 
-/*整理，按输入顺序为字符串排序.尚未完工,没有处理不同模式可能对应的一对多问题*/
-function arrage(){
-  let names = $('#names')[0].value.split('\n');
-  let output = $('#result')[0].value.split('\n');
-  let obj = {};
-  for (let i = 0; i < names.length; i++) {
-    obj[names[i]] = i; 
-  }
-
-  let temp = [];
-  let left = [];
-  
-  for (let str of output) {
-    let index = str.split('_')[0];
-    if (temp[obj[index]]!==undefined){
-      temp[obj[index]] = str;
-    } else {
-      left.push(str);
-    }
-  }
-  temp = temp.concat(left);
-  output = temp.join('\n');
-  $('#result')[0].value = output;
-}
